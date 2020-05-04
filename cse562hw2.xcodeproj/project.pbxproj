@@ -13,6 +13,7 @@
 		8EF1D46E245F5B6200BFF144 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EF1D46D245F5B6200BFF144 /* Assets.xcassets */; };
 		8EF1D471245F5B6200BFF144 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EF1D470245F5B6200BFF144 /* Preview Assets.xcassets */; };
 		8EF1D474245F5B6200BFF144 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EF1D472245F5B6200BFF144 /* LaunchScreen.storyboard */; };
+		8EF1D47C245FEB9300BFF144 /* MotionDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF1D47B245FEB9300BFF144 /* MotionDataProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8EF1D470245F5B6200BFF144 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8EF1D473245F5B6200BFF144 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EF1D475245F5B6200BFF144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EF1D47B245FEB9300BFF144 /* MotionDataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDataProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				8EF1D467245F5B5B00BFF144 /* AppDelegate.swift */,
 				8EF1D469245F5B5B00BFF144 /* SceneDelegate.swift */,
 				8EF1D46B245F5B5B00BFF144 /* ContentView.swift */,
+				8EF1D47B245FEB9300BFF144 /* MotionDataProcessor.swift */,
 				8EF1D46D245F5B6200BFF144 /* Assets.xcassets */,
 				8EF1D472245F5B6200BFF144 /* LaunchScreen.storyboard */,
 				8EF1D475245F5B6200BFF144 /* Info.plist */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EF1D47C245FEB9300BFF144 /* MotionDataProcessor.swift in Sources */,
 				8EF1D468245F5B5B00BFF144 /* AppDelegate.swift in Sources */,
 				8EF1D46A245F5B5B00BFF144 /* SceneDelegate.swift in Sources */,
 				8EF1D46C245F5B5B00BFF144 /* ContentView.swift in Sources */,
@@ -286,6 +290,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"cse562hw2/Preview Content\"";
+				DEVELOPMENT_TEAM = 8NUPNPMMNT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = cse562hw2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -305,6 +310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"cse562hw2/Preview Content\"";
+				DEVELOPMENT_TEAM = 8NUPNPMMNT;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = cse562hw2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
