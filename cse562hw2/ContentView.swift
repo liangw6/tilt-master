@@ -61,11 +61,11 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button(action: {
-                let str = "Super long string here"
+                let str = "Accelerometer and gyro output"
                 
                 do {
                     try str.write(to: self.url, atomically: true, encoding: String.Encoding.utf8)
-                    print("wrote to file at url \(self.url)")
+//                    print("wrote to file at url \(self.url)")
                 } catch {
                     // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
                     print("write to file errored!!!")

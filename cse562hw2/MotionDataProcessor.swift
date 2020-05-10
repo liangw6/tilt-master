@@ -12,6 +12,7 @@ import CoreMotion
 class MotionDataProcessor : ObservableObject {
     let motion = CMMotionManager()
     let update_freq = 1.0 / 60.0  // 60 Hz
+    var save_to_file: URL = getDocumentsDirectory().appendingPathComponent("output.txt")
     var timer : Timer!
     @Published var accelerometer_data = [Double] (repeating: 0, count: 3)
     @Published var gyro_data = [Double] (repeating: 0, count: 3)
@@ -30,6 +31,10 @@ class MotionDataProcessor : ObservableObject {
         self.motion.startAccelerometerUpdates()
     }
     
+    func set_file_url(_ save_to_file: URL) {
+        self.save_to_file = save_to_file
+    }
+    
     func start() {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: update_freq, repeats: true) {
@@ -40,6 +45,14 @@ class MotionDataProcessor : ObservableObject {
             }
             if let data = self.motion.gyroData {
                 self.gyro_data = [data.rotationRate.x, data.rotationRate.y, data.rotationRate.z]
+            }
+            
+            // store in file
+            if let fileUpdate = try? FileHandle(forUpdating: self.save_to_file) {
+                fileUpdate.seekToEndOfFile()
+                fileUpdate.write("Acce: \(self.accelerometer_data[0]) \(self.accelerometer_data[1]) \(self.accelerometer_data[2])\n".data(using: .utf8)!)
+                fileUpdate.write("Gyro: \(self.gyro_data[0]) \(self.gyro_data[1]) \(self.gyro_data[2])\n".data(using: .utf8)!)
+                fileUpdate.closeFile()
             }
         }
     }
