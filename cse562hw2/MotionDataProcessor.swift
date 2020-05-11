@@ -12,11 +12,14 @@ import CoreMotion
 class MotionDataProcessor : ObservableObject {
     let motion = CMMotionManager()
     let update_freq = 1.0 / 60.0  // 60 Hz
+    let max_updates = 60 * 60 * 5   // 60 hz * 60 seconds * 1 minute
+    
     var save_to_file: URL = getDocumentsDirectory().appendingPathComponent("output.txt")
     var timer : Timer!
+    var tot_updates = 0
     @Published var accelerometer_data = [Double] (repeating: 0, count: 3)
     @Published var gyro_data = [Double] (repeating: 0, count: 3)
-    
+    @Published var write_to_file_state = "In Progress"
     init() {
         // assume we have the data available to us
         assert(self.motion.isGyroAvailable)
@@ -29,10 +32,14 @@ class MotionDataProcessor : ObservableObject {
         // setup accelerometer
         self.motion.accelerometerUpdateInterval = self.update_freq
         self.motion.startAccelerometerUpdates()
-    }
-    
-    func set_file_url(_ save_to_file: URL) {
-        self.save_to_file = save_to_file
+        
+        // clear the file
+        let str = "Accelerometer and gyro output\n"
+        do {
+            try str.write(to: self.save_to_file, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print("write to file failed!!!")
+        }
     }
     
     func start() {
@@ -48,11 +55,18 @@ class MotionDataProcessor : ObservableObject {
             }
             
             // store in file
-            if let fileUpdate = try? FileHandle(forUpdating: self.save_to_file) {
-                fileUpdate.seekToEndOfFile()
-                fileUpdate.write("Acce: \(self.accelerometer_data[0]) \(self.accelerometer_data[1]) \(self.accelerometer_data[2])\n".data(using: .utf8)!)
-                fileUpdate.write("Gyro: \(self.gyro_data[0]) \(self.gyro_data[1]) \(self.gyro_data[2])\n".data(using: .utf8)!)
-                fileUpdate.closeFile()
+            self.tot_updates += 1
+            if (self.tot_updates <= self.max_updates) {
+                if let fileUpdate = try? FileHandle(forUpdating: self.save_to_file) {
+                    fileUpdate.seekToEndOfFile()
+                    fileUpdate.write("Acce: \(self.accelerometer_data[0]) \(self.accelerometer_data[1]) \(self.accelerometer_data[2])\n".data(using: .utf8)!)
+                    fileUpdate.write("Gyro: \(self.gyro_data[0]) \(self.gyro_data[1]) \(self.gyro_data[2])\n".data(using: .utf8)!)
+                    fileUpdate.closeFile()
+                }
+                if (self.tot_updates == self.max_updates) {
+                    print("finished updates!!!")
+                    self.write_to_file_state = "Ready!"
+                }
             }
         }
     }
