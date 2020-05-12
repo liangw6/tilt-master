@@ -90,7 +90,7 @@ struct ContentView: View {
             VStack {
                 HStack {
                       // 2
-                      ForEach(0..<3) { i in
+                      ForEach(0..<2) { i in
                         // 3
                         VStack {
                           // 4
@@ -98,7 +98,7 @@ struct ContentView: View {
                           // 5
                           Rectangle()
                             .fill(Color.green)
-                            .frame(width: 20, height: CGFloat(self.motionData.accelerometer_data[i] * 100 ))
+                            .frame(width: 20, height: CGFloat(self.motionData.accelerometer_data[i] ))
                           // 6
                           Text("acce_\(self.data_names[i])")
                             .font(.footnote)
@@ -106,7 +106,7 @@ struct ContentView: View {
                         }
                     }
                       // 2
-                      ForEach(0..<3) { i in
+                      ForEach(0..<2) { i in
                         // 3
                         VStack {
                           // 4
@@ -114,9 +114,25 @@ struct ContentView: View {
                           // 5
                           Rectangle()
                             .fill(Color.green)
-                            .frame(width: 20, height: CGFloat(self.motionData.gyro_data[i] * 100 ))
+                            .frame(width: 20, height: CGFloat(self.motionData.gyro_data[i] ))
                           // 6
                           Text("gyro_\(self.data_names[i])")
+                            .font(.footnote)
+                            .frame(height: 20)
+                        }
+                    }
+                    // 3
+                      ForEach(0..<2) { i in
+                        // 3
+                        VStack {
+                          // 4
+        //                  Spacer()
+                          // 5
+                          Rectangle()
+                            .fill(Color.green)
+                            .frame(width: 20, height: CGFloat(self.motionData.complementary_filter_result[i] ))
+                          // 6
+                          Text("comp_\(self.data_names[i])")
                             .font(.footnote)
                             .frame(height: 20)
                         }
