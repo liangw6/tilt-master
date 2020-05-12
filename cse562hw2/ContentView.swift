@@ -87,58 +87,29 @@ struct ContentView: View {
             ) {
                 Text("Start")
             }
-            VStack {
-                HStack {
-                      // 2
-                      ForEach(0..<2) { i in
-                        // 3
-                        VStack {
-                          // 4
-        //                  Spacer()
-                          // 5
-                          Rectangle()
-                            .fill(Color.green)
-                            .frame(width: 20, height: CGFloat(self.motionData.accelerometer_data[i] ))
-                          // 6
-                          Text("acce_\(self.data_names[i])")
-                            .font(.footnote)
-                            .frame(height: 20)
-                        }
-                    }
-                      // 2
-                      ForEach(0..<2) { i in
-                        // 3
-                        VStack {
-                          // 4
-        //                  Spacer()
-                          // 5
-                          Rectangle()
-                            .fill(Color.green)
-                            .frame(width: 20, height: CGFloat(self.motionData.gyro_data[i] ))
-                          // 6
-                          Text("gyro_\(self.data_names[i])")
-                            .font(.footnote)
-                            .frame(height: 20)
-                        }
-                    }
-                    // 3
-                      ForEach(0..<2) { i in
-                        // 3
-                        VStack {
-                          // 4
-        //                  Spacer()
-                          // 5
-                          Rectangle()
-                            .fill(Color.green)
-                            .frame(width: 20, height: CGFloat(self.motionData.complementary_filter_result[i] ))
-                          // 6
-                          Text("comp_\(self.data_names[i])")
-                            .font(.footnote)
-                            .frame(height: 20)
-                        }
-                    }
-                }
-            }.offset(y: 300)
+            Text("X: \(self.motionData.complementary_filter_result[0])")
+            Text("Y: \(self.motionData.complementary_filter_result[1])")
+            Text("Angle: \(self.motionData.get_angle(x: self.motionData.complementary_filter_result[0], y: self.motionData.complementary_filter_result[1]))")
+//            Rectangle()
+//                .fill(Color.green)
+//                .rotationEffect(Angle(degrees: 0))
+//                .frame(width: 20, height: CGFloat(100))
+//            Rectangle()
+//            .fill(Color.green)
+//            .rotationEffect(Angle(degrees: 45))
+//            .frame(width: 20, height: CGFloat(100))
+//            Rectangle()
+//            .fill(Color.green)
+//            .rotationEffect(Angle(degrees: 90))
+//            .frame(width: 20, height: CGFloat(100))
+//            Rectangle()
+//            .fill(Color.green)
+//            .rotationEffect(Angle(degrees: 180))
+//            .frame(width: 20, height: CGFloat(100))
+            Rectangle()
+                .fill(Color.green)
+                .rotationEffect(Angle(degrees: self.motionData.get_angle(x: self.motionData.complementary_filter_result[0], y: self.motionData.complementary_filter_result[1]) - 90))
+                .frame(width: 10, height: CGFloat(self.motionData.get_length(x: self.motionData.complementary_filter_result[0], y: self.motionData.complementary_filter_result[1]) * 5))
         }
     }
 }

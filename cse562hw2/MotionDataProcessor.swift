@@ -48,6 +48,14 @@ class MotionDataProcessor : ObservableObject {
         return sqrt(x*x + y*y + z*z)
     }
     
+    func get_length(x: Double, y:Double) -> Double {
+        return sqrt(x*x + y*y)
+    }
+    
+    func get_angle(x: Double, y:Double) -> Double {
+        return atan2(x, y) * 180 / Double.pi
+    }
+    
     func start() {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: update_freq, repeats: true) {
