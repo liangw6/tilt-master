@@ -15,7 +15,7 @@ Here is the main interface of tilt-master. By pressing start, tilt-master will s
 
 `Angle` combines X and Y to rotate a rectangle that would point to current tilt orietation. The rectangle's length is deteremined by the sum of squares of x and of y, thus reflecting the 'severeness' of a tilt.
 
-`Write to File` allows users to export computed tilt measurement into a file. The file will contain all tilt calculated through acceleromter, gyroscope or the complementary filter over the first 5 minutes after `start` is pressed. This file can be easily exported through airdrop for future analysis 
+`Write File` allows users to export computed tilt measurement into a file. The file will contain all tilt calculated through acceleromter, gyroscope or the complementary filter over the first 5 minutes after `start` is pressed. This file can be easily exported through airdrop for future analysis. Note that when 5 minutes have passed since `start` was pressed, the app will stop recording any more data and `Write File: In Progress` will change into `Write File: Ready!`, i.e. ready to export.
 
 ![alt text](main_interface.jpeg)
 
