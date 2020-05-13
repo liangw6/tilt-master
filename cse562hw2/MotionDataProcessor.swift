@@ -53,7 +53,7 @@ class MotionDataProcessor : ObservableObject {
     }
     
     func get_angle(x: Double, y:Double) -> Double {
-        return atan2(x, y) * 180 / Double.pi
+        return atan2(y, x) * 180 / Double.pi
     }
     
     func start() {

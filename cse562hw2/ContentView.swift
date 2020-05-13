@@ -108,7 +108,7 @@ struct ContentView: View {
 //            .frame(width: 20, height: CGFloat(100))
             Rectangle()
                 .fill(Color.green)
-                .rotationEffect(Angle(degrees: self.motionData.get_angle(x: self.motionData.complementary_filter_result[0], y: self.motionData.complementary_filter_result[1]) - 90))
+                .rotationEffect(Angle(degrees: self.motionData.get_angle(x: self.motionData.complementary_filter_result[0], y: self.motionData.complementary_filter_result[1])))
                 .frame(width: 10, height: CGFloat(self.motionData.get_length(x: self.motionData.complementary_filter_result[0], y: self.motionData.complementary_filter_result[1]) * 5))
         }
     }
