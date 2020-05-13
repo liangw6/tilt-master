@@ -8,12 +8,16 @@ Assume that a 0 tilt happens when the device is placed flat on surface (with scr
 ## Run
 Simply compile and run in xcode!
 
+Post-processing folder contains python scripts that can be used to analyze the data obtained through the app. Details on how to collect those data are explained in the next section.
+
 ## Main interface
 Here is the main interface of tilt-master. By pressing start, tilt-master will start measuring and recording accelerometer and gyroscope data. It will then use a complementary filter to measure tilt and display estimated tilt over `X` axis and over `Y` axis on screen.
 
 `Angle` combines X and Y to rotate a rectangle that would point to current tilt orietation. The rectangle's length is deteremined by the sum of squares of x and of y, thus reflecting the 'severeness' of a tilt.
 
-![alt text](main_interface.jpg)
+`Write to File` allows users to export computed tilt measurement into a file. The file will contain all tilt calculated through acceleromter, gyroscope or the complementary filter over the first 5 minutes after `start` is pressed. This file can be easily exported through airdrop for future analysis 
+
+![alt text](main_interface.jpeg)
 
 ## Requirement
 This code uses SwiftUI, so it requires target devices to be at IOS 13 or later.
